@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barber Chic | Barbearia moderna</title>
+    <meta
+      name="description"
+      content="Barber Chic: barbearia moderna com agenda online, cortes, barba, produtos premium e atendimento via WhatsApp."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Barber Chic">
+        <span class="brand-mark">BC</span>
+        <span>
+          <strong>Barber Chic</strong>
+          <small>Premium grooming</small>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Menu principal">
+        <a href="#agenda">Agenda</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#financeiro">Gestao</a>
+      </nav>
+      <div class="header-actions">
+        <a class="icon-link" href="https://www.instagram.com/barberchic.fonseca/" target="_blank" rel="noreferrer">Instagram</a>
+        <button class="btn btn-ghost" id="adminOpen" type="button">Admin</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Barbearia premium desde 2002</p>
+          <h1>Barber Chic, corte preciso e agenda sem atrito.</h1>
+          <p class="hero-copy">
+            Atendimento moderno para cabelo, barba e cuidados masculinos, com barbeiros especialistas,
+            produtos selecionados e confirmacao rapida pelo WhatsApp.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#agenda">Marcar horário</a>
+            <a class="btn btn-secondary" href="https://wa.me/5521988657808?text=Olá,%20quero%20falar%20com%20a%20Barber%20Chic" target="_blank" rel="noreferrer">WhatsApp</a>
+          </div>
+          <div class="hero-stats" aria-label="Destaques">
+            <span><strong>4</strong> barbeiros</span>
+            <span><strong>8</strong> servicos</span>
+            <span><strong>100%</strong> chic</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band" aria-label="Experiencia">
+        <div>
+          <p class="eyebrow">Experiencia Barber Chic</p>
+          <h2>Um salão pensado para clientes que valorizam tempo, estilo e consistencia.</h2>
+        </div>
+        <div class="feature-grid">
+          <article>
+            <span>01</span>
+            <h3>Agenda por barbeiro</h3>
+            <p>O cliente escolhe profissional, servico, data e horario. O admin aprova e chama no WhatsApp.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Produtos no local</h3>
+            <p>Pomadas, oleos, shampoos e finalizadores aparecem em uma vitrine administravel.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Gestao simples</h3>
+            <p>Entradas, saidas e totais por barbeiro ficam centralizados no painel interno.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split" id="agenda">
+        <div class="section-copy">
+          <p class="eyebrow">Agendamento</p>
+          <h2>Escolha seu barbeiro e deixe o pedido na fila de aprovação.</h2>
+          <p>
+            Assim que o horario for liberado, a equipe confirma pelo numero de WhatsApp cadastrado.
+          </p>
+          <div class="mini-list" id="barberPreview"></div>
+        </div>
+        <form class="booking-panel" id="bookingForm">
+          <div class="form-row two">
+            <label>Nome
+              <input required name="clientName" placeholder="Seu nome" />
+            </label>
+            <label>WhatsApp
+              <input required name="clientPhone" inputmode="tel" placeholder="11999999999" />
+            </label>
+          </div>
+          <div class="form-row two">
+            <label>Barbeiro
+              <select required name="barberId" id="bookingBarber"></select>
+            </label>
+            <label>Servico
+              <select required name="service">
+                <option value="Corte masculino">Corte masculino</option>
+                <option value="Barba completa">Barba completa</option>
+                <option value="Corte + barba">Corte + barba</option>
+                <option value="Sobrancelha">Sobrancelha</option>
+                <option value="Pigmentacao">Pigmentacao</option>
+              </select>
+            </label>
+          </div>
+          <div class="form-row two">
+            <label>Data
+              <input required type="date" name="date" />
+            </label>
+            <label>Horario
+              <input required type="time" name="time" />
+            </label>
+          </div>
+          <label>Observacao
+            <textarea name="notes" rows="3" placeholder="Ex: degradê baixo, barba desenhada..."></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit">Enviar marcação</button>
+          <p class="form-status" id="bookingStatus" role="status"></p>
+        </form>
+      </section>
+
+      <section class="section" id="produtos">
+        <div class="section-heading">
+          <p class="eyebrow">Produtos a venda</p>
+          <h2>Vitrine Barber Chic</h2>
+        </div>
+        <div class="card-grid products-grid" id="productsGrid"></div>
+      </section>
+
+      <section class="section gallery-section" id="galeria">
+        <div class="section-heading">
+          <p class="eyebrow">Cortes, barba e ambiente</p>
+          <h2>Galeria de trabalhos</h2>
+        </div>
+        <div class="gallery-grid">
+          <figure class="wide"><img src="Barbearia VIP — Barbearia Premium desde 1998_files/jackmac34-barber-3173419-3s43oj6f.jpg" alt="Corte masculino em acabamento" /></figure>
+          <figure><img src="Barbearia VIP — Barbearia Premium desde 1998_files/photo-1503951914875-452162b0f3f1" alt="Barbeiro aparando barba" /></figure>
+          <figure><img src="Barbearia VIP — Barbearia Premium desde 1998_files/barbearia-interior-cinema_d498eed8.jpg" alt="Interior da barbearia" /></figure>
+          <figure><img src="Barbearia VIP — Barbearia Premium desde 1998_files/dsc_7389-doits4qx.jpg" alt="Cliente em atendimento" /></figure>
+          <figure class="wide"><img src="Barbearia VIP — Barbearia Premium desde 1998_files/open-bar-vip_bc2260b7.jpg" alt="Espaco premium da barbearia" /></figure>
+        </div>
+      </section>
+
+      <section class="section contact-band">
+        <div>
+          <p class="eyebrow">Contato direto</p>
+          <h2>Fale com a Barber Chic no WhatsApp ou acompanhe os cortes no Instagram.</h2>
+          <div class="contact-details">
+            <p><strong>Endereço</strong> Alameda São Boaventura, 553 - Fonseca, Niterói - RJ</p>
+            <p><strong>Horários</strong> Seg. a Qua. 09:00-19:00 | Qui. e Sex. 09:00-20:00 | Sáb. 09:00-18:00</p>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="https://wa.me/5521988657808?text=Olá,%20quero%20agendar%20na%20Barber%20Chic" target="_blank" rel="noreferrer">Chamar no WhatsApp</a>
+          <a class="btn btn-secondary" href="https://www.instagram.com/barberchic.fonseca/" target="_blank" rel="noreferrer">Ver Instagram</a>
+        </div>
+      </section>
+
+      <section class="section admin-shell hidden" id="financeiro" aria-live="polite">
+        <div class="admin-header">
+          <div>
+            <p class="eyebrow">Painel interno</p>
+            <h2>Gestao Barber Chic</h2>
+          </div>
+          <button class="btn btn-ghost" id="adminClose" type="button">Sair do admin</button>
+        </div>
+        <div class="admin-tabs" role="tablist" aria-label="Painel administrativo">
+          <button class="active" data-tab="appointments" type="button">Agendamentos</button>
+          <button data-tab="barbers" type="button">Barbeiros</button>
+          <button data-tab="products" type="button">Produtos</button>
+          <button data-tab="finance" type="button">Financeiro</button>
+        </div>
+
+        <div class="admin-panel active" id="tab-appointments">
+          <div class="panel-heading">
+            <h3>Solicitacoes de agenda</h3>
+            <span id="appointmentsCount"></span>
+          </div>
+          <div class="admin-list" id="appointmentsList"></div>
+        </div>
+
+        <div class="admin-panel" id="tab-barbers">
+          <form class="admin-form" id="barberForm">
+            <input required name="name" placeholder="Nome do barbeiro" />
+            <input required name="specialty" placeholder="Especialidade" />
+            <button class="btn btn-primary" type="submit">Adicionar barbeiro</button>
+          </form>
+          <div class="admin-list" id="barbersList"></div>
+        </div>
+
+        <div class="admin-panel" id="tab-products">
+          <form class="admin-form" id="productForm">
+            <input required name="name" placeholder="Produto" />
+            <input required name="price" inputmode="decimal" placeholder="Preco" />
+            <input name="image" placeholder="URL ou caminho da imagem" />
+            <button class="btn btn-primary" type="submit">Adicionar produto</button>
+          </form>
+          <div class="admin-list" id="productsList"></div>
+        </div>
+
+        <div class="admin-panel" id="tab-finance">
+          <form class="admin-form finance-form" id="financeForm">
+            <select required name="barberId" id="financeBarber"></select>
+            <select required name="type">
+              <option value="income">Entrada</option>
+              <option value="expense">Saida</option>
+            </select>
+            <input required name="amount" inputmode="decimal" placeholder="Valor" />
+            <input required name="description" placeholder="Descricao" />
+            <button class="btn btn-primary" type="submit">Lancar</button>
+          </form>
+          <div class="finance-summary" id="financeSummary"></div>
+          <div class="admin-list" id="financeList"></div>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="login-modal" id="loginModal">
+      <form method="dialog" class="login-card" id="loginForm">
+        <button class="modal-close" id="loginClose" type="button" aria-label="Fechar">x</button>
+        <p class="eyebrow">Acesso interno</p>
+        <h2>Entrar no admin</h2>
+        <label>Senha
+          <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Digite a senha" />
+        </label>
+        <button class="btn btn-primary" value="default" type="submit">Acessar painel</button>
+        <p class="form-status" id="loginStatus" role="status"></p>
+      </form>
+    </dialog>
+
+    <footer class="footer">
+      <strong>Barber Chic</strong>
+      <span>Agenda, vitrine e gestao em uma experiencia premium.</span>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
